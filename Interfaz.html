@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CualliFit - Ropa Deportiva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #111827;
+            --color-secondary: #3B82F6;
+            --color-background: #FFFFFF;
+            --color-background-secondary: #F3F4F6;
+            --color-error: #EF4444;
+            --font-family: 'Inter', sans-serif;
+            --font-size-h1: 2.5rem;
+            --font-size-base: 1rem;
+            --font-weight-semibold: 600;
+            --font-weight-regular: 400;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-regular);
+            color: var(--color-primary);
+            background-color: var(--color-background);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--color-background);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            transition: opacity 0.3s ease;
+            margin-right: 0.75rem;
+        }
+
+        .logo-image:hover {
+            opacity: 0.8;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-primary);
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.7;
+        }
+
+        .cart-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            opacity: 0.7;
+        }
+
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--color-background-secondary);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: var(--font-size-h1);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .featured-products {
+            margin: 2rem 0;
+        }
+
+        .featured-products h3 {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .featured-item {
+            background-color: var(--color-background);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .featured-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--font-weight-semibold);
+            font-size: 0.9rem;
+        }
+
+        .featured-info {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .featured-info h4 {
+            font-size: 1rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .category-description {
+            color: #6B7280;
+            font-size: 0.9rem;
+            font-weight: var(--font-weight-regular);
+        }
+
+        .category-camisetas {
+            background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+        }
+
+        .category-pantalones {
+            background: linear-gradient(135deg, #78716C 0%, #57534E 100%);
+        }
+
+        .category-chaquetas {
+            background: linear-gradient(135deg, #71717A 0%, #52525B 100%);
+        }
+
+        .category-yoga {
+            background: linear-gradient(135deg, #6B7280 0%, #374151 100%);
+        }
+
+        .category-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .category-item:hover::before {
+            opacity: 1;
+        }
+
+        .category-item .featured-image {
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .featured-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .featured-image {
+                height: 120px;
+                font-size: 0.8rem;
+            }
+            
+            .featured-info h4 {
+                font-size: 0.9rem;
+            }
+            
+            .featured-price {
+                font-size: 1rem;
+            }
+        }
+
+        .cta-button {
+            background-color: var(--color-secondary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Size Calculator Modal */
+        .size-calculator-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1001;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .size-calculator-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .calculator-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+
+        .calculator-content {
+            position: relative;
+            background-color: var(--color-background);
+            margin: auto;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            border-radius: 12px;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .calculator-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculator-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .calculator-container {
+            padding: 3rem 2rem;
+        }
+
+        .calculator-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 2rem;
+        }
+
+        .calculator-form {
+            background-color: var(--color-background-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: var(--font-size-base);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+        }
+
+        .form-group input.error {
+            border-color: var(--color-error);
+        }
+
+        .error-message {
+            color: var(--color-error);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .calculate-button {
+            width: 100%;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .calculate-button:hover {
+            opacity: 0.9;
+        }
+
+        .calculate-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results */
+        .results {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: var(--color-background);
+            border-radius: 12px;
+            border: 2px solid var(--color-secondary);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            display: none;
+        }
+
+        .results.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .results h3 {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .size-recommendation {
+            font-size: 2rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary);
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .size-details {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .size-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 1rem;
+            background-color: var(--color-background);
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .product-card {
+            background-color: var(--color-background);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 0.875rem;
+            color: #6B7280;
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            color: var(--color-secondary);
+            font-weight: var(--font-weight-semibold);
+            font-size: 1.125rem;
+        }
+
+        .product-colors {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .color-dot:hover {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 1rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+        }
+
+        /* Product Modal */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--color-background);
+            margin: auto;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+
+        .modal-image {
+            background-color: var(--color-background-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image-large {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--font-weight-semibold);
+            font-size: 1.125rem;
+        }
+
+        .modal-info {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal-info h2 {
+            font-size: 1.75rem;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            color: #6B7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .modal-options {
+            margin-bottom: 2rem;
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group label {
+            display: block;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 0.5rem;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            padding: 0.5rem 1rem;
+            border: 2px solid #E5E7EB;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .size-option:hover {
+            border-color: var(--color-secondary);
+        }
+
+        .size-option.active {
+            border-color: var(--color-secondary);
+            background-color: var(--color-secondary);
+            color: white;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .color-option {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .color-option.active {
+            border-color: var(--color-secondary);
+            transform: scale(1.1);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #E5E7EB;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-semibold);
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            border-color: var(--color-secondary);
+            color: var(--color-secondary);
+        }
+
+        #quantity {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 2px solid #E5E7EB;
+            border-radius: 6px;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .add-to-cart-btn, .buy-now-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .add-to-cart-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .buy-now-btn {
+            background-color: var(--color-secondary);
+            color: white;
+        }
+
+        .buy-now-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .size-guide-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .size-guide-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--color-background-secondary);
+            color: var(--color-primary);
+            border: 2px solid var(--color-secondary);
+            border-radius: 8px;
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .size-guide-btn:hover {
+            background-color: var(--color-secondary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .product-features {
+            border-top: 1px solid #E5E7EB;
+            padding-top: 1.5rem;
+        }
+
+        .product-features h4 {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 0.75rem;
+        }
+
+        .product-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-features li {
+            padding: 0.25rem 0;
+            color: #6B7280;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            color: var(--color-secondary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .form-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Responsive Modal */
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-image-large {
+                height: 250px;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+    <img src="public/images/image.png" alt="CualliFit" class="logo-image">
+    <span class="logo-text">CualliFit</span>
+</a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="Hombre.html">Hombre</a></li>
+                    <li><a href="Mujer.html">Mujer</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="Contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <button class="cart-icon" aria-label="Carrito de compras">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <h1>Ropa Deportiva de Calidad</h1>
+            <p>Descubre nuestra colección de ropa deportiva diseñada para el máximo rendimiento y comodidad</p>
+        
+            <!-- Productos Destacados -->
+            <div class="featured-products">
+                <h3>Explora por Categorías</h3>
+                <div class="featured-grid">
+                    <div class="featured-item category-item" data-category="camisetas">
+                        <div class="featured-image category-camisetas">
+                            <span>Camisetas & Tops</span>
+                        </div>
+                        <div class="featured-info">
+                            <h4>Camisetas & Tops</h4>
+                            <p class="category-description">Explora nuestra selección</p>
+                        </div>
+                    </div>
+        
+                    <div class="featured-item category-item" data-category="pantalones">
+                        <div class="featured-image category-pantalones">
+                            <span>Pantalones & Shorts</span>
+                        </div>
+                        <div class="featured-info">
+                            <h4>Pantalones & Shorts</h4>
+                            <p class="category-description">Explora nuestra selección</p>
+                        </div>
+                    </div>
+        
+                    <div class="featured-item category-item" data-category="chaquetas">
+                        <div class="featured-image category-chaquetas">
+                            <span>Chaquetas & Sudaderas</span>
+                        </div>
+                        <div class="featured-info">
+                            <h4>Chaquetas & Sudaderas</h4>
+                            <p class="category-description">Explora nuestra selección</p>
+                        </div>
+                    </div>
+        
+                    <div class="featured-item category-item" data-category="yoga">
+                        <div class="featured-image category-yoga">
+                            <span>Yoga & Fitness</span>
+                        </div>
+                        <div class="featured-info">
+                            <h4>Yoga & Fitness</h4>
+                            <p class="category-description">Explora nuestra selección</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#productos" class="cta-button">Ver Todos los Productos</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="productos">
+        <div class="products-container">
+            <h2 class="products-title">Nuestra Colección</h2>
+            <div class="products-grid">
+                <article class="product-card" data-product-id="1">
+                    <div class="product-image">
+                        <span>Camiseta Deportiva</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Camiseta Performance Pro</h3>
+                        <p class="product-description">Camiseta técnica de alto rendimiento con tecnología Dri-FIT</p>
+                        <p class="product-price">€29.99</p>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background-color: #000"></span>
+                            <span class="color-dot" style="background-color: #fff; border: 1px solid #ccc"></span>
+                            <span class="color-dot" style="background-color: #3B82F6"></span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" data-product-id="2">
+                    <div class="product-image">
+                        <span>Pantalón Deportivo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pantalón FlexFit</h3>
+                        <p class="product-description">Pantalón deportivo con ajuste perfecto y máxima comodidad</p>
+                        <p class="product-price">€49.99</p>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background-color: #000"></span>
+                            <span class="color-dot" style="background-color: #374151"></span>
+                            <span class="color-dot" style="background-color: #1F2937"></span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" data-product-id="3">
+                    <div class="product-image">
+                        <span>Chaqueta Running</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Chaqueta WindShield</h3>
+                        <p class="product-description">Chaqueta cortavientos ligera e impermeable</p>
+                        <p class="product-price">€79.99</p>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background-color: #000"></span>
+                            <span class="color-dot" style="background-color: #EF4444"></span>
+                            <span class="color-dot" style="background-color: #10B981"></span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" data-product-id="4">
+                    <div class="product-image">
+                        <span>Shorts Training</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Shorts UltraLight</h3>
+                        <p class="product-description">Shorts ultraligeros para entrenamientos intensos</p>
+                        <p class="product-price">€24.99</p>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background-color: #000"></span>
+                            <span class="color-dot" style="background-color: #3B82F6"></span>
+                            <span class="color-dot" style="background-color: #F59E0B"></span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" data-product-id="5">
+                    <div class="product-image">
+                        <span>Sudadera Training</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sudadera ComfortFit</h3>
+                        <p class="product-description">Sudadera de algodón premium para entrenamientos</p>
+                        <p class="product-price">€39.99</p>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background-color: #374151"></span>
+                            <span class="color-dot" style="background-color: #1F2937"></span>
+                            <span class="color-dot" style="background-color: #fff; border: 1px solid #ccc"></span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="product-card" data-product-id="6">
+                    <div class="product-image">
+                        <span>Leggings Yoga</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Leggings FlexMove</h3>
+                        <p class="product-description">Leggings de alta compresión para yoga y pilates</p>
+                        <p class="product-price">€34.99</p>
+                        <div class="product-colors">
+                            <span class="color-dot" style="background-color: #000"></span>
+                            <span class="color-dot" style="background-color: #8B5CF6"></span>
+                            <span class="color-dot" style="background-color: #EC4899"></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>CualliFit</h4>
+                <p>Ropa deportiva de calidad con el ajuste perfecto para cada atleta.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323C5.902 8.198 7.053 7.708 8.35 7.708s2.448.49 3.323 1.297c.897.875 1.387 2.026 1.387 3.323s-.49 2.448-1.297 3.323c-.875.897-2.026 1.387-3.323 1.387z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#hombre">Hombre</a></li>
+                    <li><a href="#mujer">Mujer</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Devoluciones</a></li>
+                    <li><a href="#">Envíos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Soporte</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Chat en Vivo</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 CualliFit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <div class="product-image-large" id="modalProductImage">
+                        <span>Imagen del Producto</span>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalProductName">Nombre del Producto</h2>
+                    <p class="modal-price" id="modalProductPrice">€0.00</p>
+                    <p class="modal-description" id="modalProductDescription">Descripción del producto</p>
+                    
+                    <div class="modal-options">
+                        <div class="option-group">
+                            <label>Talla:</label>
+                            <div class="size-options" id="sizeOptions">
+                                <button class="size-option" data-size="XS">XS</button>
+                                <button class="size-option" data-size="S">S</button>
+                                <button class="size-option active" data-size="M">M</button>
+                                <button class="size-option" data-size="L">L</button>
+                                <button class="size-option" data-size="XL">XL</button>
+                                <button class="size-option" data-size="XXL">XXL</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Color:</label>
+                            <div class="color-options" id="colorOptions">
+                                <!-- Se llenarán dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Cantidad:</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" id="decreaseQty">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" id="increaseQty">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="m1 1 4 4 2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            Añadir al Carrito
+                        </button>
+                        <button class="buy-now-btn">Comprar Ahora</button>
+                    </div>
+
+                    <div class="size-guide-section">
+                        <button class="size-guide-btn" id="sizeGuideBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                            Buscar mi talla perfecta
+                        </button>
+                    </div>
+                    
+                    <div class="product-features">
+                        <h4>Características:</h4>
+                        <ul id="productFeatures">
+                            <!-- Se llenarán dinámicamente -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size Calculator Modal -->
+    <div class="size-calculator-modal" id="sizeCalculatorModal">
+        <div class="calculator-overlay"></div>
+        <div class="calculator-content">
+            <button class="calculator-close" id="calculatorClose">&times;</button>
+            <div class="calculator-container">
+                <h2 class="calculator-title">Calculador de Tallas Inteligente</h2>
+                
+                <form class="calculator-form" id="sizeCalculatorForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="height">Altura (cm) *</label>
+                            <input type="number" id="height" name="height" min="140" max="220" required>
+                            <span class="error-message">Por favor ingresa una altura válida (140-220 cm)</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="weight">Peso (kg) *</label>
+                            <input type="number" id="weight" name="weight" min="40" max="150" required>
+                            <span class="error-message">Por favor ingresa un peso válido (40-150 kg)</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="chest">Pecho (cm)</label>
+                            <input type="number" id="chest" name="chest" min="70" max="140">
+                            <span class="error-message">Medida de pecho inválida (70-140 cm)</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="waist">Cintura (cm)</label>
+                            <input type="number" id="waist" name="waist" min="60" max="120">
+                            <span class="error-message">Medida de cintura inválida (60-120 cm)</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hips">Cadera (cm)</label>
+                            <input type="number" id="hips" name="hips" min="70" max="140">
+                            <span class="error-message">Medida de cadera inválida (70-140 cm)</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender">Género</label>
+                            <select id="gender" name="gender">
+                                <option value="unisex">Unisex</option>
+                                <option value="hombre">Hombre</option>
+                                <option value="mujer">Mujer</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="calculate-button">Calcular mi talla</button>
+                </form>
+
+                <div class="results" id="results">
+                    <h3>Tu talla recomendada</h3>
+                    <div class="size-recommendation" id="recommendedSize">M</div>
+                    <div class="size-details" id="sizeDetails">
+                        <!-- Los detalles se llenarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Size Calculator Logic
+        class SizeCalculator {
+            constructor() {
+                this.form = document.getElementById('sizeCalculatorForm');
+                this.results = document.getElementById('results');
+                this.recommendedSize = document.getElementById('recommendedSize');
+                this.sizeDetails = document.getElementById('sizeDetails');
+                
+                this.initEventListeners();
+            }
+
+            initEventListeners() {
+                this.form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.calculateSize();
+                });
+
+                // Real-time validation
+                const inputs = this.form.querySelectorAll('input[type="number"]');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', () => this.validateInput(input));
+                    input.addEventListener('input', () => this.clearError(input));
+                });
+            }
+
+            validateInput(input) {
+                const value = parseFloat(input.value);
+                const min = parseFloat(input.min);
+                const max = parseFloat(input.max);
+                const errorMessage = input.parentNode.querySelector('.error-message');
+
+                if (input.required && (!value || value < min || value > max)) {
+                    input.classList.add('error');
+                    errorMessage.style.display = 'block';
+                    return false;
+                } else if (!input.required && input.value && (value < min || value > max)) {
+                    input.classList.add('error');
+                    errorMessage.style.display = 'block';
+                    return false;
+                }
+
+                input.classList.remove('error');
+                errorMessage.style.display = 'none';
+                return true;
+            }
+
+            clearError(input) {
+                input.classList.remove('error');
+                const errorMessage = input.parentNode.querySelector('.error-message');
+                errorMessage.style.display = 'none';
+            }
+
+            calculateSize() {
+                // Validate all inputs
+                const inputs = this.form.querySelectorAll('input[type="number"]');
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (!this.validateInput(input)) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    return;
+                }
+
+                // Get form data
+                const formData = new FormData(this.form);
+                const height = parseFloat(formData.get('height'));
+                const weight = parseFloat(formData.get('weight'));
+                const chest = parseFloat(formData.get('chest')) || null;
+                const waist = parseFloat(formData.get('waist')) || null;
+                const hips = parseFloat(formData.get('hips')) || null;
+                const gender = formData.get('gender');
+
+                // Calculate BMI
+                const bmi = weight / Math.pow(height / 100, 2);
+
+                // Calculate size based on height, weight, and measurements
+                const size = this.determineSizeFromMeasurements(height, weight, bmi, chest, waist, hips, gender);
+
+                // Show results
+                this.displayResults(size, height, weight, bmi, chest, waist, hips);
+            }
+
+            determineSizeFromMeasurements(height, weight, bmi, chest, waist, hips, gender) {
+                let sizeScore = 0;
+
+                // Base score from height
+                if (height < 160) sizeScore += 1;
+                else if (height < 170) sizeScore += 2;
+                else if (height < 180) sizeScore += 3;
+                else if (height < 190) sizeScore += 4;
+                else sizeScore += 5;
+
+                // Adjust for BMI
+                if (bmi < 18.5) sizeScore -= 1;
+                else if (bmi < 25) sizeScore += 0;
+                else if (bmi < 30) sizeScore += 1;
+                else sizeScore += 2;
+
+                // Adjust for specific measurements if provided
+                if (chest) {
+                    if (chest < 85) sizeScore -= 0.5;
+                    else if (chest < 95) sizeScore += 0;
+                    else if (chest < 105) sizeScore += 0.5;
+                    else sizeScore += 1;
+                }
+
+                if (waist) {
+                    if (waist < 75) sizeScore -= 0.5;
+                    else if (waist < 85) sizeScore += 0;
+                    else if (waist < 95) sizeScore += 0.5;
+                    else sizeScore += 1;
+                }
+
+                // Gender adjustments
+                if (gender === 'mujer') {
+                    sizeScore -= 0.5;
+                } else if (gender === 'hombre') {
+                    sizeScore += 0.5;
+                }
+
+                // Convert score to size
+                const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+                const sizeIndex = Math.max(0, Math.min(sizes.length - 1, Math.round(sizeScore)));
+                
+                return sizes[sizeIndex];
+            }
+
+            displayResults(size, height, weight, bmi, chest, waist, hips) {
+                this.recommendedSize.textContent = size;
+
+                // Create size details
+                const details = [
+                    { label: 'Talla recomendada', value: size },
+                    { label: 'Altura', value: `${height} cm` },
+                    { label: 'Peso', value: `${weight} kg` },
+                    { label: 'IMC', value: bmi.toFixed(1) }
+                ];
+
+                if (chest) details.push({ label: 'Pecho', value: `${chest} cm` });
+                if (waist) details.push({ label: 'Cintura', value: `${waist} cm` });
+                if (hips) details.push({ label: 'Cadera', value: `${hips} cm` });
+
+                this.sizeDetails.innerHTML = details.map(detail => `
+                    <div class="size-detail">
+                        <span>${detail.label}:</span>
+                        <strong>${detail.value}</strong>
+                    </div>
+                `).join('');
+
+                // Show results with animation
+                this.results.classList.add('show');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Product Modal Functionality
+        class ProductModal {
+            constructor() {
+                this.modal = document.getElementById('productModal');
+                this.modalClose = document.getElementById('modalClose');
+                this.modalOverlay = this.modal.querySelector('.modal-overlay');
+                this.productCards = document.querySelectorAll('.product-card');
+                this.sizeCalculatorModal = document.getElementById('sizeCalculatorModal');
+                this.calculatorClose = document.getElementById('calculatorClose');
+                this.calculatorOverlay = this.sizeCalculatorModal.querySelector('.calculator-overlay');
+                
+                this.products = {
+                    1: {
+                        name: "Camiseta Performance Pro",
+                        price: 29.99,
+                        description: "Camiseta técnica de alto rendimiento con tecnología Dri-FIT que mantiene la piel seca y cómoda durante los entrenamientos más intensos.",
+                        colors: [
+                            { name: "Negro", value: "#000" },
+                            { name: "Blanco", value: "#fff" },
+                            { name: "Azul", value: "#3B82F6" }
+                        ],
+                        features: [
+                            "Tecnología Dri-FIT",
+                            "Tejido transpirable",
+                            "Ajuste atlético",
+                            "Costuras planas",
+                            "Protección UV"
+                        ]
+                    },
+                    2: {
+                        name: "Pantalón FlexFit",
+                        price: 49.99,
+                        description: "Pantalón deportivo con tecnología de estiramiento en 4 direcciones para máxima libertad de movimiento.",
+                        colors: [
+                            { name: "Negro", value: "#000" },
+                            { name: "Gris Oscuro", value: "#374151" },
+                            { name: "Gris", value: "#1F2937" }
+                        ],
+                        features: [
+                            "Estiramiento 4D",
+                            "Cintura elástica",
+                            "Bolsillos con cremallera",
+                            "Tejido de secado rápido",
+                            "Ajuste cómodo"
+                        ]
+                    },
+                    3: {
+                        name: "Chaqueta WindShield",
+                        price: 79.99,
+                        description: "Chaqueta cortavientos ultraligera e impermeable, perfecta para running y actividades al aire libre.",
+                        colors: [
+                            { name: "Negro", value: "#000" },
+                            { name: "Rojo", value: "#EF4444" },
+                            { name: "Verde", value: "#10B981" }
+                        ],
+                        features: [
+                            "Impermeable",
+                            "Cortavientos",
+                            "Ultraligera",
+                            "Capucha ajustable",
+                            "Bolsillos laterales"
+                        ]
+                    },
+                    4: {
+                        name: "Shorts UltraLight",
+                        price: 24.99,
+                        description: "Shorts ultraligeros con forro interior y tecnología de absorción de humedad.",
+                        colors: [
+                            { name: "Negro", value: "#000" },
+                            { name: "Azul", value: "#3B82F6" },
+                            { name: "Naranja", value: "#F59E0B" }
+                        ],
+                        features: [
+                            "Ultraligeros",
+                            "Forro interior",
+                            "Absorción de humedad",
+                            "Cintura elástica",
+                            "Bolsillo trasero"
+                        ]
+                    },
+                    5: {
+                        name: "Sudadera ComfortFit",
+                        price: 39.99,
+                        description: "Sudadera de algodón premium con interior de felpa suave, ideal para entrenamientos y uso casual.",
+                        colors: [
+                            { name: "Gris Oscuro", value: "#374151" },
+                            { name: "Negro", value: "#1F2937" },
+                            { name: "Blanco", value: "#fff" }
+                        ],
+                        features: [
+                            "Algodón premium",
+                            "Interior de felpa",
+                            "Capucha ajustable",
+                            "Bolsillo canguro",
+                            "Puños elásticos"
+                        ]
+                    },
+                    6: {
+                        name: "Leggings FlexMove",
+                        price: 34.99,
+                        description: "Leggings de alta compresión con tecnología de control de humedad, perfectos para yoga y pilates.",
+                        colors: [
+                            { name: "Negro", value: "#000" },
+                            { name: "Morado", value: "#8B5CF6" },
+                            { name: "Rosa", value: "#EC4899" }
+                        ],
+                        features: [
+                            "Alta compresión",
+                            "Control de humedad",
+                            "Cintura alta",
+                            "Costuras planas",
+                            "Tejido opaco"
+                        ]
+                    }
+                };
+                
+                this.selectedSize = 'M';
+                this.selectedColor = null;
+                this.quantity = 1;
+                
+                this.initEventListeners();
+            }
+            
+            initEventListeners() {
+                // Open modal when clicking product cards
+                this.productCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        const productId = card.dataset.productId;
+                        this.openModal(productId);
+                    });
+                });
+
+                // Open modal when clicking featured items
+                document.querySelectorAll('.featured-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const productId = item.dataset.productId;
+                        this.openModal(productId);
+                    });
+                });
+                
+                // Category navigation
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const category = item.dataset.category;
+                        this.filterByCategory(category);
+                    });
+                });
+                
+                // Close modal events
+                this.modalClose.addEventListener('click', () => this.closeModal());
+                this.modalOverlay.addEventListener('click', () => this.closeModal());
+                
+                // Size calculator modal events
+                this.calculatorClose.addEventListener('click', () => this.closeSizeCalculator());
+                this.calculatorOverlay.addEventListener('click', () => this.closeSizeCalculator());
+                
+                // Size selection
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('size-option')) {
+                        document.querySelectorAll('.size-option').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.selectedSize = e.target.dataset.size;
+                    }
+                });
+                
+                // Color selection
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('color-option')) {
+                        document.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.selectedColor = e.target.dataset.color;
+                    }
+                });
+                
+                // Quantity controls
+                document.getElementById('decreaseQty').addEventListener('click', () => {
+                    const qtyInput = document.getElementById('quantity');
+                    if (this.quantity > 1) {
+                        this.quantity--;
+                        qtyInput.value = this.quantity;
+                    }
+                });
+                
+                document.getElementById('increaseQty').addEventListener('click', () => {
+                    const qtyInput = document.getElementById('quantity');
+                    if (this.quantity < 10) {
+                        this.quantity++;
+                        qtyInput.value = this.quantity;
+                    }
+                });
+                
+                document.getElementById('quantity').addEventListener('change', (e) => {
+                    this.quantity = parseInt(e.target.value) || 1;
+                });
+                
+                // Add to cart button
+                document.getElementById('addToCartBtn').addEventListener('click', () => {
+                    this.addToCart();
+                });
+                
+                // ESC key to close modals
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        if (this.sizeCalculatorModal.classList.contains('show')) {
+                            this.closeSizeCalculator();
+                        } else if (this.modal.classList.contains('show')) {
+                            this.closeModal();
+                        }
+                    }
+                });
+
+                // Size guide button
+                document.getElementById('sizeGuideBtn').addEventListener('click', () => {
+                    this.closeModal();
+                    setTimeout(() => {
+                        this.openSizeCalculator();
+                    }, 300);
+                });
+            }
+            
+            openModal(productId) {
+                const product = this.products[productId];
+                if (!product) return;
+                
+                // Update modal content
+                document.getElementById('modalProductName').textContent = product.name;
+                document.getElementById('modalProductPrice').textContent = `€${product.price}`;
+                document.getElementById('modalProductDescription').textContent = product.description;
+                
+                // Update colors
+                const colorOptions = document.getElementById('colorOptions');
+                colorOptions.innerHTML = product.colors.map((color, index) => `
+                    <div class="color-option ${index === 0 ? 'active' : ''}" 
+                         data-color="${color.name}" 
+                         style="background-color: ${color.value}; ${color.value === '#fff' ? 'border: 1px solid #ccc;' : ''}"
+                         title="${color.name}">
+                    </div>
+                `).join('');
+                
+                // Update features
+                const featuresContainer = document.getElementById('productFeatures');
+                featuresContainer.innerHTML = product.features.map(feature => `<li>${feature}</li>`).join('');
+                
+                // Reset selections
+                this.selectedColor = product.colors[0].name;
+                this.selectedSize = 'M';
+                this.quantity = 1;
+                document.getElementById('quantity').value = 1;
+                
+                // Show modal
+                this.modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            closeModal() {
+                this.modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            
+            openSizeCalculator() {
+                this.sizeCalculatorModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            closeSizeCalculator() {
+                this.sizeCalculatorModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            
+            addToCart() {
+                const productName = document.getElementById('modalProductName').textContent;
+                const productPrice = document.getElementById('modalProductPrice').textContent;
+                
+                // Simulate adding to cart
+                const cartData = {
+                    name: productName,
+                    price: productPrice,
+                    size: this.selectedSize,
+                    color: this.selectedColor,
+                    quantity: this.quantity
+                };
+                
+                // Show confirmation
+                const addToCartBtn = document.getElementById('addToCartBtn');
+                const originalText = addToCartBtn.innerHTML;
+                
+                addToCartBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20,6 9,17 4,12"></polyline>
+                    </svg>
+                    ¡Añadido!
+                `;
+                addToCartBtn.style.backgroundColor = '#10B981';
+                
+                setTimeout(() => {
+                    addToCartBtn.innerHTML = originalText;
+                    addToCartBtn.style.backgroundColor = '';
+                    this.closeModal();
+                }, 1500);
+                
+                console.log('Producto añadido al carrito:', cartData);
+            }
+
+            filterByCategory(category) {
+                // Scroll to products section
+                document.getElementById('productos').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Filter products based on category
+                const productCards = document.querySelectorAll('.product-card');
+                
+                setTimeout(() => {
+                    productCards.forEach(card => {
+                        const productId = card.dataset.productId;
+                        const product = this.products[productId];
+                        let shouldShow = false;
+                        
+                        switch(category) {
+                            case 'camisetas':
+                                shouldShow = product.name.toLowerCase().includes('camiseta');
+                                break;
+                            case 'pantalones':
+                                shouldShow = product.name.toLowerCase().includes('pantalón') || 
+                                           product.name.toLowerCase().includes('shorts') ||
+                                           product.name.toLowerCase().includes('leggings');
+                                break;
+                            case 'chaquetas':
+                                shouldShow = product.name.toLowerCase().includes('chaqueta') || 
+                                           product.name.toLowerCase().includes('sudadera');
+                                break;
+                            case 'yoga':
+                                shouldShow = product.name.toLowerCase().includes('leggings') ||
+                                           product.name.toLowerCase().includes('yoga') ||
+                                           product.name.toLowerCase().includes('flex');
+                                break;
+                            default:
+                                shouldShow = true;
+                        }
+                        
+                        if (shouldShow) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.5s ease';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }, 500);
+            }
+        }
+
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', () => {
+            new SizeCalculator();
+            new ProductModal();
+        });
+
+        // Add loading state to calculate button
+        document.getElementById('sizeCalculatorForm').addEventListener('submit', function(e) {
+            const button = this.querySelector('.calculate-button');
+            button.textContent = 'Calculando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Calcular mi talla';
+                button.disabled = false;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
